@@ -38,3 +38,5 @@ Route::get('/categorias/{id}', [CategoriaController::class, 'show']);
 Route::post('/categorias', [CategoriaController::class, 'store']);
 Route::put('/categorias/{id}', [CategoriaController::class, 'update']);
 Route::delete('/categorias/{id}', [CategoriaController::class, 'destroy']);
+
+Route::post('/pedidos/calcular-frete', [PedidoController::class, 'calcularFrete']);

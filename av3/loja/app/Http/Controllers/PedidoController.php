@@ -26,16 +26,28 @@ class PedidoController extends Controller
             'quantidade' => 'required|integer|min:1',
             'total' => 'required|numeric',
         ]);
-    
+
         $pedido = Pedido::create($request->all());
-    
+
         return response()->json($pedido, 201);
-    }    
+    }
+
+    public function calcularFrete(Request $request)
+    {
+        $request->validate([
+            'produto_id' => 'required|exists:produtos,id',
+            'quantidade' => 'required|integer|min:1',
+        ]);
+
+
+        $frete = 10.00; // Exemplo simples para substituir pelo cálculo real, não consegui a api dos correios
+
+        return response()->json(['frete' => $frete], 200);
+    }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'cliente_nome' => 'required',
             'total' => 'required|numeric',
         ]);
 
